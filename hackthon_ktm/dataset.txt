@@ -1,0 +1,321 @@
+I like ice cream.
+i want icecream
+i want the car
+I need water.
+I would love a sandwich.
+Can I have juice?
+I enjoy playing with my toy.
+I feel happy when I get a hug.
+Let’s play together.
+I want to read a book.
+I would like a cookie.
+I love going outside.
+Can we watch TV?
+I like listening to music.
+I want to visit the park.
+I enjoy riding my bike.
+I want to draw a picture.
+I want to color a page.
+I feel tired; I need a nap.
+I want to go shopping today.
+I miss my friend.
+I love petting the dog.
+Let’s play a game together.
+I want to build a tower with blocks.
+I want to bake cookies with you.
+I would like to have a picnic.
+I want to swim in the pool.
+Let’s go for a walk.
+I want to go to school tomorrow.
+I enjoy playing soccer.
+I love playing basketball.
+I want to learn something new today.
+I want to use the computer.
+I would like to watch a movie.
+I am hungry; I want dinner.
+I want to eat breakfast soon.
+I would like to eat lunch now.
+I want to play some music.
+I want to sing my favorite song.
+I love to dance at parties.
+I want to play with my cat.
+I want to make a craft project.
+I enjoy spending time with my friends.
+I want to celebrate at a party.
+I want to help you with that.
+I would like to share my toys.
+I want to draw a picture for you.
+I want to tell you a story.
+I want to watch cartoons on Saturday.
+I enjoy playing hide and seek.
+I want to visit a zoo this weekend.
+I would love to go to the beach.
+I want to eat some fruit.
+I want to make a smoothie for breakfast.
+I want to ride a horse at the ranch.
+I want to climb a tree in the park.
+I enjoy doing puzzles with my family.
+I want to play with my dollhouse.
+I want to play with my action figures.
+I like dressing up for Halloween.
+I want to go camping this summer.
+I want to go fishing with my dad.
+I want to fly a kite on a windy day.
+I want to learn about different animals.
+I want to explore the backyard.
+I love playing in the snow during winter.
+I want to go to a museum and see dinosaurs.
+I want to have a sleepover at my friend's house.
+I want to try new foods at the restaurant.
+I want to get ice cream after dinner.
+I want to play tag in the park.
+I want to do yoga to relax.
+I want to make a blanket fort.
+I enjoy playing with LEGO blocks.
+I want to build a model airplane.
+I want to play chess with my grandma.
+I want to visit a farm and see animals.
+I want to watch fireworks on the Fourth of July.
+I want to go to a concert with my family.
+I want to play outside after school.
+I want to dig in the sandbox.
+I want to do arts and crafts.
+I want to make a card for my mom.
+I want to play with stickers and decorate.
+I want to splash in the water.
+I want to jump on the trampoline.
+I want to throw a ball in the yard.
+I want to have a dance party at home.
+I want to bake a cake for my birthday.
+I want to make a video with my friends.
+I want to go on a treasure hunt in the backyard.
+I want to ride my bike around the neighborhood.
+I want to write a letter to my pen pal.
+I want to take a picture of my family.
+I want to visit my grandparents this weekend.
+I want to make new friends at school.
+I want to play with a puppet in the playroom.
+I want to listen to a story at bedtime.
+I want to plant flowers in the garden.
+I want to watch nature shows on TV.
+I want to learn how to swim this summer.
+I would love to go to the amusement park.
+I love chocolate cake.
+I need some fruit.
+I would like a new toy.
+Can I have some milk?
+I enjoy playing games.
+I feel excited about the party.
+Let’s go on an adventure.
+I want to watch a show.
+I would love a donut.
+I enjoy riding my scooter.
+Can we go to the park?
+I want to listen to a story.
+I like to draw pictures.
+I need help with my homework.
+I would like a blanket.
+Can I have some popcorn?
+I love playing with my friends.
+I want to bake a cake.
+I enjoy watching movies.
+I feel proud of my drawing.
+Let’s build a fort together.
+I want to explore the garden.
+I would like to make a snack.
+I need a nap after lunch.
+I want to try a new game.
+I love going for walks.
+Can I have a pet fish?
+I want to play dress-up.
+I enjoy doing puzzles with you.
+I feel calm when I read.
+Let’s have a picnic in the park.
+I want to play the guitar.
+I would love to see a movie.
+I need to finish my book.
+I want to make new friends.
+I enjoy visiting my grandparents.
+I feel happy when I play outside.
+Can we go to the beach tomorrow?
+I want to learn how to skate.
+I would like a chocolate bar.
+I need to brush my teeth.
+I want to ride the carousel.
+I enjoy looking at the stars.
+I feel sleepy after lunch.
+Let’s play a fun board game.
+I want to try painting.
+I love going to the zoo.
+Can I have a cookie, please?
+I want to learn to cook.
+I enjoy dancing to music.
+I feel safe with my family.
+Let’s make a scrapbook together.
+I want to visit a farm.
+I would like to plant a tree.
+I need a new backpack.
+I want to join the school club.
+I enjoy listening to the rain.
+I feel excited about my birthday.
+Let’s play in the snow!
+I want to make a new friend.
+I would love to go ice skating.
+I need to tie my shoes.
+I want to play in the sandbox.
+I enjoy visiting the library.
+I feel happy when I help others.
+Can we have a family game night?
+I want to take a picture of the sunset.
+I would like a new book to read.
+I need to pack my bag.
+I want to watch the sunrise.
+I enjoy making crafts.
+I feel proud of my achievements.
+Let’s go on a nature walk.
+I want to try different foods.
+I would love to visit a museum.
+I need to clean my room.
+I want to make a birthday card.
+I enjoy spending time with my pet.
+I feel excited about the field trip.
+Can we play soccer after school?
+I want to learn to ride a bike.
+I would like to fly a kite.
+I need some new crayons.
+I want to try out for the play.
+I enjoy listening to my favorite songs.
+I feel happy when it’s sunny outside.
+Let’s have a sleepover this weekend.
+I want to go to the farmers' market.
+I would love to make a fruit salad.
+I need to practice my spelling.
+I want to join a sports team.
+I enjoy going to concerts.
+I feel excited to meet new people.
+Can we bake cookies together?
+I want to make a video.
+I would like to visit the aquarium.
+I need a warm jacket for winter.
+I want to learn how to surf.
+I enjoy playing in the backyard.
+I feel happy when I create art.
+I like ice cream.
+i want icecream
+i want the car
+I need water.
+I would love a sandwich.
+Can I have juice?
+I enjoy playing with my toy.
+I feel happy when I get a hug.
+Let’s play together.
+I want to read a book.
+I would like a cookie.
+I love going outside.
+Can you pass me the water?
+Please get the milk from the fridge.
+Let’s make some juice together.
+I love this cereal!
+Can you help me with the bread?
+The butter is on the table.
+I like cheese on my sandwich.
+Can I have an apple, please?
+The banana is ripe.
+This sandwich is delicious.
+It’s time to eat dinner.
+Let’s play a game now.
+Can we watch a movie?
+I want to read this book.
+Let’s listen to some music.
+I would like to draw a picture.
+Can I color with you?
+Let’s go outside and play.
+I love going to the park!
+I want to ride my bike today.
+Let’s play hide and seek!
+Can I help you cook?
+It’s time to clean the room.
+I need to wash my hands.
+I’m going to brush my teeth.
+I want to take a bath now.
+Please help me get dressed.
+I like this blue shirt.
+I’m wearing my red shoes today.
+Can I have a jacket?
+I want to use the computer now.
+Let’s play a video game together.
+I’m hungry for a snack.
+Can I have a cookie?
+The cake smells amazing!
+I love ice cream!
+Let’s go shopping this weekend.
+I want to visit Grandma soon.
+Can I talk to Mom?
+I need to speak with Dad.
+Goodnight, everyone!
+It’s time to go to bed.
+Can you read me a story?
+I want to sleep with my teddy bear.
+Please turn off the lights.
+Can you open the window?
+Let’s play some music.
+I want to dance!
+Can we jump on the bed?
+I love swinging in the yard.
+Let’s slide down the slide!
+I want to play in the yard today.
+I can help with laundry.
+I’ll feed the pet.
+Let’s take the dog for a walk.
+Can I water the plants?
+I want to plant flowers in the garden.
+I can sweep the floor.
+Let me help with the dishes.
+I’ll set the table for dinner.
+Can you clear the table?
+Let’s watch a movie together.
+I want popcorn for the movie.
+Can I build with blocks?
+Let’s have a picnic in the yard.
+I want to play dress-up with you.
+Let’s do a puzzle together.
+Can we play with dolls?
+I want to have a tea party!
+Can we build a fort in the living room?
+I have a funny joke to tell!
+Let’s sing a song together.
+I want to make a craft project.
+Can we paint a picture?
+I want to bake cookies today.
+Let’s play catch outside.
+I want to ride my scooter.
+Can we play soccer in the yard?
+I’d like to go for a walk now.
+Let’s visit the library tomorrow.
+I want to have a sleepover.
+Can we watch the stars tonight?
+I want to make a scrapbook.
+Let’s do a science experiment!
+Can I write a letter to my friend?
+I want to draw a picture for Dad.
+Can I take a picture of you?
+Let’s make a fun video together.
+I want to talk about my day at school.
+Can I share my feelings with you?
+I love spending time with you.
+Please help me tie my shoes.
+I need to find my favorite toy.
+Can we play outside for a while?
+I want to make dinner tonight.
+I like it when you tell me stories.
+Let’s try a new recipe together.
+I want to decorate my room.
+Can we play with the puppy?
+I love you so much!
+May i go to toilet madam?
+may i go to toilet sir?
+may i go to drink water
+may i read this subject?
+can i play in the field?
+please, sir can we sing song?
+
