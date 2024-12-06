@@ -172,7 +172,7 @@ song: require("../assets/images/song.png"),
 craft: require("../assets/images/craft.png"),
 project: require("../assets/images/project.png"),
 paint: require("../assets/images/paint.png"),
-bake: require("../assets/images/bake.png"),
+favicon: require("../assets/images/favicon.png"),
 cookies: require("../assets/images/cookies.png"),
 catch: require("../assets/images/catch.png"),
 scooter: require("../assets/images/scooter.png"),
@@ -231,7 +231,7 @@ export default function Screen1() {
           const response = await axios.get<{
             hits: { largeImageURL: string }[];
           }>(
-            `https://pixabay.com/api/?key=${pixabayApiKey}&q=${word}&image_type=photo&per_page=3`
+            `https://pixabay.com/api/?key=${pixabayApiKey}&q=${word}&image_type=all&per_page=3`
           );
           const imageUrl: string | null =
             response.data.hits.length > 0

@@ -12,6 +12,7 @@ import  RootStackParamList  from './type';
 
 const Stack = createStackNavigator<RootStackParamList>();
 
+
 export default function App() {
   return (
     <NavigationIndependentTree>

@@ -4,10 +4,10 @@ import { useNavigation, NavigationProp } from '@react-navigation/native';
 import RootStackParamList from './type'; 
 import { Hero } from '@/assets/texts';
 
-const hero = require('./home.png');
-const school = require('./school.png');
-const frequent = require('./frequent.png');
-const free = require('./free.png');
+const hero = require('./home_images/home.png');
+const school = require('./home_images/school.png');
+const frequent = require('./home_images/frequent.png');
+const free = require('./home_images/free.png');
 
 const images=[hero,school, free ,frequent];
 

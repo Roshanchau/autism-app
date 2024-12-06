@@ -1,11 +1,33 @@
 from flask import Flask, jsonify, request
+import requests
+import redis
+import json
 from flask_cors import CORS
 import torch
 from transformers import GPT2LMHeadModel, GPT2Tokenizer
 from history import load_dataset, get_unique_next_words_from_dataset
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 app = Flask(__name__)
 CORS(app)
+
+# Pixabay API setup
+PIXABAY_URL = "https://pixabay.com/api/?key=${pixabayApiKey}&q=${word}&image_type=all&per_page=3"
+PIXABAY_API_KEY =os.getenv("API_kEY")
+
+
+# setup redis
+redis_client = redis.Redis(
+    host='redis-18594.c301.ap-south-1-1.ec2.redns.redis-cloud.com',
+    port=18594,
+    decode_responses=True,
+    username="default",
+    password=os.getenv("REDIS_PASSWORD")
+)
+print(redis_client)
 
 # Load the model and tokenizer once when the app starts
 model = GPT2LMHeadModel.from_pretrained("gpt2").to("cuda" if torch.cuda.is_available() else "cpu")
@@ -55,6 +77,67 @@ def generate_predicted_words(input_text,index =0):
             words.append(token.strip().lower())
 
     return history_next_text + words
+
+
+# fetch from pixabay
+def fetch_images_from_pixabay(query: str) -> dict:
+    # print("yo query ko lagi fetch hudai xa..." , query)
+    response = requests.get(PIXABAY_URL, params={
+        "key": PIXABAY_API_KEY,
+        "q": query,
+        "image_type": "all",
+        "per_page": "3"
+    })
+    # print("this is from pixabay haita====>" , response.json())
+    if response.status_code != 200:
+        return {"error": "Failed to fetch data from Pixabay"}
+    return response.json()
+
+
+# fetch images api
+@app.route('/api/images', methods=['GET'])
+def get_images():
+    query = request.args.get('query')
+    correspond_id=request.args.get('id')
+    print("yo chai id hai" , correspond_id)
+    print("yo chai query ho hai" , query)
+    if not query:
+        return jsonify({"error": "Query parameter is required"}), 400 
+    
+    # Check Redis cache for images
+    cached_images = redis_client.get('image_cache')
+    # print("yo ho chaiyeko cached heloooooooooooooooooooooo", cached_images)
+    if cached_images:
+        cached_images = json.loads(cached_images)  # Convert JSON string to dictionary
+        # print("cached_img" , cached_images)
+        for i in cached_images['hits']:
+            # print("lagalagalag------------>",i.get('query_id'))
+
+            # compare the id of the already queried id and id of the query currently
+            if(i.get('query_id')==correspond_id):
+                print("Fetching from cache-------------->" , i['pageURL'])
+                return jsonify(i['largeImageURL'])
+    
+    print("Fetching from Pixabay")
+    # Fetch from Pixabay if not in cache
+    # Fetch from Pixabay if not in cache
+    data = fetch_images_from_pixabay(query)
+    if "error" in data:
+        return jsonify(data), 500
+    
+    for i in data['hits']:
+        i['query_id']=correspond_id
+        # print("i bhitra haita",i['query_id'])
+
+    # get the total images i.e previously cached images and current images.
+    if cached_images:
+       data['hits'] = cached_images['hits'] + data['hits']
+       data['total'] = cached_images['total'] + data['total']
+
+    # Cache the result in Redis for 1hrs
+    redis_client.setex('image_cache', 3600, json.dumps(data))
+    
+    return jsonify(data['hits'].pop()['largeImageURL'])
 
 @app.route('/api/display_words', methods=['GET'])
 def get_display_words():
@@ -140,5 +223,6 @@ def predict_words():
         print(f"An error occurred: {str(e)}")  # Log the error message
         return jsonify({'error': str(e)}), 500
 
+    
 if __name__ == '__main__':
-    app.run(host='192.168.1.66', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)
