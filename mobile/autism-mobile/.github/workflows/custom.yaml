@@ -22,7 +22,7 @@ jobs:
 
       - name: Set up Git credentials
         run: |
-          git config --global user.email "roshanchau001.com"
+          git config --global user.email "roshanchau001@gmail.com"
           git config --global user.name "GitHub Action"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
