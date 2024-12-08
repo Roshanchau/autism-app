@@ -1,0 +1,33 @@
+name: Custom
+
+on: push
+
+permissions:
+  contents: write
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install curl and jq
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y curl jq
+
+      - name: Set up Git safe directory
+        run: git config --global --add safe.directory /github/workspace
+
+      - name: Set up Git credentials
+        run: |
+          git config --global user.email "roshanchau001.com"
+          git config --global user.name "GitHub Action"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Run custom action
+        uses: Roshanchau/autism-app@main
+        env:
+          G_API_KEY : ${{ secrets.G_API_KEY }}
