@@ -27,7 +27,7 @@ if [ ! -f "README.md" ]; then
   echo "Prompt for GEMINI API: $PROMPT"
 
   # Call Gemini API to get content
-  API_KEY=$G_API_KEY 
+  API_KEY=$OPENAI_API_KEY 
   echo "Using API key: $API_KEY"
 
   RESPONSE=$(curl -H 'Content-Type: application/json' -d '{"contents":[{"parts":[{"text":  "'"$PROMPT"'"}]}]}' -X POST "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=$API_KEY")

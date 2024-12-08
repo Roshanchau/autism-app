@@ -30,4 +30,4 @@ jobs:
       - name: Run custom action
         uses: Roshanchau/autism-app@main
         env:
-          G_API_KEY : ${{ secrets.G_API_KEY }}
+          OPENAI_API_KEY : ${{ secrets.OPENAI_API_KEY }}
