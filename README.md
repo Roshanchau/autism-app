@@ -70,7 +70,7 @@ This repository contains a project developed during a hackathon, featuring a **F
    - Update the backend API URL in the React Native app code to match your Flask server's IP address.
 4. Start the Expo development server:
    ```bash
-   expo start
+   npx expo start
    ```
 
 ---

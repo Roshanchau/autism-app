@@ -135,7 +135,7 @@ def get_images():
        data['total'] = cached_images['total'] + data['total']
 
     # Cache the result in Redis for 1hrs
-    redis_client.setex('image_cache', 3600, json.dumps(data))
+    redis_client.setex('image_cache', 86400, json.dumps(data))
     
     return jsonify(data['hits'].pop()['largeImageURL'])
 

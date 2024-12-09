@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Alert,
   Image,
+  ActivityIndicator
 } from "react-native";
 
 import { SafeAreaView, TextInput } from "react-native";
@@ -203,7 +204,6 @@ export default function Screen1() {
     { word: string; imageUrl: string | null }[]
   >([]);
 
-  const[isLoading , setisLoading]=useState(false)
 
   const imageCache: { [key: string]: string } = {};
 
@@ -319,7 +319,7 @@ export default function Screen1() {
     }
   };
 
-  // console.log("this is display list haha", displayList);
+  console.log("this is display list haha", displayList);
 
   const speak = async (textToSpeak: string) => {
     try {
@@ -338,7 +338,6 @@ export default function Screen1() {
       const combinedText = newSelectedTexts.join(" ");
       onChangeText(combinedText);
       setCombinedText(combinedText);
-      fetchImages();
       return newSelectedTexts;
     });
   };
@@ -406,8 +405,6 @@ export default function Screen1() {
                     source={localImages[item]}
                     style={[styles.box]}
                     progressiveRenderingEnabled={true}
-                    onLoadStart={()=>{setisLoading(true)}}
-                    onLoadEnd={()=>{setisLoading(false)}}
                     resizeMode="cover"
                   />
                 ) : imageUrl ? (
@@ -415,13 +412,10 @@ export default function Screen1() {
                     source={{ uri: imageUrl }}
                     style={[styles.box]}
                     progressiveRenderingEnabled={true}
-                    onLoadStart={()=>{setisLoading(true)}}
-                    onLoadEnd={()=>{setisLoading(false)}}
                     resizeMode="cover"
                   />
                 ) : (
                   <></>
-                  // <Text>{item}</Text> // Optionally display a placeholder
                 )}
               </TouchableOpacity>
               <Text style={styles.boxTextBelow}>{item}</Text>
