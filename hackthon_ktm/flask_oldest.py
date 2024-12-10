@@ -115,10 +115,10 @@ def get_images():
 
             # compare the id of the already queried id and id of the query currently
             if(i.get('query_id')==correspond_id):
-                print("Fetching from cache-------------->" , i['pageURL'])
-                return jsonify(i['largeImageURL'])
+                print("Fetching from cache-------------->" , i['previewURL'])
+                return jsonify(i['previewURL'])
     
-    print("Fetching from Pixabay")
+    # print("Fetching from Pixabay")
     # Fetch from Pixabay if not in cache
     # Fetch from Pixabay if not in cache
     data = fetch_images_from_pixabay(query)
@@ -137,11 +137,13 @@ def get_images():
     # Cache the result in Redis for 1hrs
     redis_client.setex('image_cache', 86400, json.dumps(data))
     
-    return jsonify(data['hits'].pop()['largeImageURL'])
+    print("image from Pixabay-------------->" , data['hits'].pop()['previewURL'])
+    return jsonify(data['hits'].pop()['previewURL'])
 
 @app.route('/api/display_words', methods=['GET'])
 def get_display_words():
     count = int(request.args.get('count', 0))
+    print("Count:", count)
     start_index = 9 * count
     end_index = start_index + 9
 
@@ -151,7 +153,8 @@ def get_display_words():
         end_index = 9
 
     display_words = default_predicted_words[start_index:end_index]
-    return jsonify(display_words)
+    print("Display words:", display_words)
+    return display_words
 
 
 # @app.route('/api/scenerio', methods=['POST'])

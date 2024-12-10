@@ -6,8 +6,8 @@ import {
   StyleSheet,
   Alert,
   Image,
-  ActivityIndicator
 } from "react-native";
+
 
 import { SafeAreaView, TextInput } from "react-native";
 import Icon from "react-native-vector-icons/MaterialIcons";
@@ -193,11 +193,12 @@ const localImages: { [key: string]: any } = {
   were: require("../assets/images/were.png"),
 };
 
+
 export default function Screen1() {
   const [text, onChangeText] = useState("Display Text");
   const [combinedText, setCombinedText] = useState("Display Text");
   const [selectedTexts, setSelectedTexts] = useState<string[]>([]);
-  const [displayList, setDisplayList] = useState<string[]>([]);
+  const [displayList, setDisplayList] = useState<string[]>(['i', 'what', 'hello', 'where', 'who', 'how', 'can', 'is', 'are']);
   const [counter, setCounter] = useState(0);
   const [flag, setFlag] = useState(0);
   const [imageUrls, setImageUrls] = useState<
@@ -221,6 +222,7 @@ export default function Screen1() {
     fetchImages();
   }, [displayList]);
 
+
   const fetchImages = async () => {
     try {
       const imageRequests = displayList.map(async (word) => {
@@ -228,6 +230,7 @@ export default function Screen1() {
         if (localImages[word]) {
           return { word, imageUrl: localImages[word] };
         }
+
 
         // Check if image is already cached in memory
         if (imageCache[word]) {
@@ -246,8 +249,9 @@ export default function Screen1() {
           } else {
             imageUrl = response.data;
           }
-
           // console.log("this is the image url", imageUrl);
+
+
           // Cache the image URL in memory
           if (imageUrl) {
             imageCache[word] = imageUrl;
@@ -267,14 +271,15 @@ export default function Screen1() {
       const imageResults = await Promise.all(imageRequests);
 
       setImageUrls(imageResults);
-      // console.log("yo sabai image haru fetch bhako ho", imageResults);
-    } catch (error) {
+      console.log("yo sabai image haru fetch bhako ho", imageResults);
+    }catch (error) {
       console.error("Failed to fetch images:", error);
     }
   };
 
   const fetchDisplayWords = async () => {
     try {
+      console.log("tyring.....");
       const response = await fetch(
         ` http://192.168.1.66:5000/api/display_words?count=${counter}`
       );
@@ -282,10 +287,10 @@ export default function Screen1() {
         throw new Error("Network response was not ok");
       }
       const data = await response.json();
-      // console.log("Fetched words:", data);
+      console.log("Fetched words:", data);
       setDisplayList(data);
     } catch (error) {
-      console.error("Failed to fetch:", error);
+      console.error("Failed to fetch: words", error);
     }
   };
 
@@ -319,7 +324,7 @@ export default function Screen1() {
     }
   };
 
-  console.log("this is display list haha", displayList);
+  // console.log("this is display list haha", displayList);
 
   const speak = async (textToSpeak: string) => {
     try {
@@ -340,6 +345,7 @@ export default function Screen1() {
       setCombinedText(combinedText);
       return newSelectedTexts;
     });
+
   };
 
   const handleTextChange = (newText: string) => {
@@ -464,7 +470,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     margin: 10,
-    transitionProperty:"ease-in-out"
+    transitionProperty:"ease-in-out",
   },
   boxText: {
     color: "#ffffff",
