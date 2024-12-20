@@ -1,4 +1,5 @@
 import React, { useState, useEffect, } from "react";
+
 import {
   View,
   TouchableOpacity,
@@ -198,9 +199,9 @@ export default function Screen1() {
   const [text, onChangeText] = useState("Display Text");
   const [combinedText, setCombinedText] = useState("Display Text");
   const [selectedTexts, setSelectedTexts] = useState<string[]>([]);
-  const [displayList, setDisplayList] = useState<string[]>(['i', 'what', 'hello', 'where', 'who', 'how', 'can', 'is', 'are']);
-  const [counter, setCounter] = useState(0);
-  const [flag, setFlag] = useState(0);
+  const [displayList, setDisplayList] = useState<string[]>([]);
+  const [counter, setCounter] = useState<number>(0);
+  const [flag, setFlag] = useState<number>(0);
   const [imageUrls, setImageUrls] = useState<
     { word: string; imageUrl: string | null }[]
   >([]);
@@ -230,7 +231,6 @@ export default function Screen1() {
         if (localImages[word]) {
           return { word, imageUrl: localImages[word] };
         }
-
 
         // Check if image is already cached in memory
         if (imageCache[word]) {
@@ -279,9 +279,10 @@ export default function Screen1() {
 
   const fetchDisplayWords = async () => {
     try {
-      console.log("tyring.....");
+      console.log("tyring....." , counter);
+      console.log("this is the counter", typeof counter);
       const response = await fetch(
-        ` http://192.168.1.66:5000/api/display_words?count=${counter}`
+        `http://192.168.1.66:5000/api/display_words?count=${counter}`
       );
       if (!response.ok) {
         throw new Error("Network response was not ok");

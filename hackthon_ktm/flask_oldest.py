@@ -142,12 +142,18 @@ def get_images():
 
 @app.route('/api/display_words', methods=['GET'])
 def get_display_words():
-    count = int(request.args.get('count', 0))
+    try:
+        count = int(request.args.get('count', 0)) # Default to 0 if 'count' is not provided
+        print(type(count))
+    except ValueError:
+        return jsonify({"error": "Invalid count value"}), 400
+
     print("Count:", count)
     start_index = 9 * count
     end_index = start_index + 9
-
-    if start_index >= len(predicted_words):  # Reset if out of bounds
+    print("Start index:", start_index)
+    print("End index:", end_index)
+    if start_index >= len(default_predicted_words):  # Reset if out of bounds
         count = 0
         start_index = 0
         end_index = 9
@@ -155,6 +161,7 @@ def get_display_words():
     display_words = default_predicted_words[start_index:end_index]
     print("Display words:", display_words)
     return display_words
+
 
 
 # @app.route('/api/scenerio', methods=['POST'])
