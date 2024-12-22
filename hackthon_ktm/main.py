@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 import os
 from typing import List, Dict, Optional, Union
 import logging
-from most_repeted_sentences import get_most_repeated_sentences, save_most_repeated_sentences
+from hackthon_ktm.most_repeted_sentences import get_most_repeated_sentences, save_most_repeated_sentences
 
 
 # Configure logging
@@ -22,6 +22,7 @@ load_dotenv()
 # Initialize Flask app
 app = Flask(__name__)
 CORS(app)
+
 
 # Constants
 DEFAULT_PREDICTED_WORDS = [
