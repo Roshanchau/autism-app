@@ -28,7 +28,7 @@ export default function FrequentSentences() {
 
   const getSentences = async () => {
     try {
-      const response = await fetch(' http://192.168.1.66:5000/api/huu');
+      const response = await fetch(' http://192.168.1.66:5000/api/most_repeated_sentence');
       const data = await response.json();
       console.log("API response:", data);
   

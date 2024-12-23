@@ -9,10 +9,18 @@ from history import load_dataset, get_unique_next_words_from_dataset
 from dotenv import load_dotenv
 import os
 
+from typing import List, Dict, Optional, Union
+import logging
+from most_repeted_sentences import sentences_name, get_most_repeated_sentences, save_most_repeated_sentences
+
 load_dotenv()
 
 app = Flask(__name__)
 CORS(app)
+
+# Setup logging
+logging.basicConfig(level=logging.ERROR)
+logger = logging.getLogger(__name__)
 
 # Pixabay API setup
 PIXABAY_URL = "https://pixabay.com/api/?key=${pixabayApiKey}&q=${word}&image_type=all&per_page=3"
@@ -36,6 +44,7 @@ tokenizer = GPT2Tokenizer.from_pretrained("gpt2")
 # Global variables
 predicted_words = []
 append_list = []
+global_count=0
 
 default_predicted_words = ['i', 'what', 'hello', 'where', 'who', 'how', 'can', 'is', 'are', 'could', 
  'would', 'may', 'can', 'please', 'will', 'shall', 'did', 'have', 'has', 
@@ -143,7 +152,7 @@ def get_images():
 @app.route('/api/display_words', methods=['GET'])
 def get_display_words():
     try:
-        count = int(request.args.get('count', 0)) # Default to 0 if 'count' is not provided
+        count = int(request.args.get('count', global_count)) # Default to 0 if 'count' is not provided
         print(type(count))
     except ValueError:
         return jsonify({"error": "Invalid count value"}), 400
@@ -177,30 +186,57 @@ def get_display_words():
     # return jsonify(display_words)
 
 
-@app.route('/api/huu', methods=['GET'])
-def fetch_most_repeated_sentences():  # Ensure the function name is unique
-    try:
-        with open('most_repeated_sentences.txt', 'r') as file:
-            # Read the first 5 lines
-            lines = []
-            for _ in range(5):
-                text = file.readline().strip().split(":")[0]
-                print(text)
-                lines.append(text)
+# @app.route('/api/huu', methods=['GET'])
+# def fetch_most_repeated_sentences():  # Ensure the function name is unique
+#     try:
+#         with open('most_repeated_sentences.txt', 'r') as file:
+#             # Read the first 5 lines
+#             lines = []
+#             for _ in range(5):
+#                 text = file.readline().strip().split(":")[0]
+#                 print(text)
+#                 lines.append(text)
                 
-            # lines = [file.readline().strip().split(':')[0] for _ in range(5)]
+#             # lines = [file.readline().strip().split(':')[0] for _ in range(5)]
         
-        return jsonify(lines), 200  # Return the lines as JSON with a 200 OK status
-    except FileNotFoundError:
-        return jsonify({"error": "File not found."}), 404  # Handle file not found error
+#         return jsonify(lines), 200  # Return the lines as JSON with a 200 OK status
+#     except FileNotFoundError:
+#         return jsonify({"error": "File not found."}), 404  # Handle file not found error
+#     except Exception as e:
+#         return jsonify({"error": str(e)}), 500  # Handle other potential errors
+
+@app.route('/api/most_repeated_sentence', methods=['GET'])
+def fetch_most_repeated_sentences():
+    try:
+        sentences = []
+        with open('most_repeated_sentences.txt', 'r') as file:
+            for line in file:
+                line = line.strip()
+                if ':' in line:  # Check if line contains the separator
+                    try:
+                        sentence, count = line.rsplit(':', 1)  # Split from right side
+                        count = int(count.strip())
+                        sentences.append((sentence.strip(), count))
+                    except (ValueError, IndexError):
+                        continue  # Skip invalid lines
+        
+        # Sort sentences by count in descending order
+        sorted_sentences = sorted(sentences, key=lambda x: x[1], reverse=True)
+        
+        # Get top 5 sentences only
+        top_5_sentences = [sentence[0] for sentence in sorted_sentences[:5]]
+        
+        return jsonify(top_5_sentences)
+    
+    except FileNotFoundError:   
+        return jsonify({"error": "File not found"}), 404
     except Exception as e:
-        return jsonify({"error": str(e)}), 500  # Handle other potential errors
-
-
+        logger.error(f"Error in fetch_most_repeated_sentences: {e}")
+        return jsonify({"error": "Internal server error"}), 500
 
 @app.route('/api/guu', methods=['POST'])
 def predict_words():
-    global predicted_words, append_list
+    global predicted_words, append_list , global_count
 
     try:
         data = request.get_json()
@@ -211,14 +247,31 @@ def predict_words():
         
         input_text = data.get('item', '').strip()  # Ensure we are checking the stripped input
 
-        # Handle case when input_text is "1"
-        if input_text == "1":
-            print("Resetting append_list")
-            append_list = []  # Reset the append list
-            return jsonify(default_predicted_words[:9])  # Return the default words
+        # # Handle case when input_text is "1"
+        # if input_text == "1":
+        #     print("Resetting append_list")
+        #     append_list = []  # Reset the append list
+        #     return jsonify(default_predicted_words[:9])  # Return the default words
 
+
+        # Handle reset request
+        if input_text == "1":
+        
+            with open('dataset.txt', 'a') as file:
+                file.write(' '.join(append_list) + '\n')
+            
+            append_list = []
+            global_count = 0
+            sentence= sentences_name('dataset.txt')
+            repeated_sentences = get_most_repeated_sentences(sentence)
+            print("Most repeated sentences:", repeated_sentences)
+            save_most_repeated_sentences(repeated_sentences, 'most_repeated_sentences.txt')
+            
+            return jsonify(default_predicted_words[:9])
+        
         if not input_text:
             return jsonify({'error': 'No input text provided'}), 400
+        
 
         append_list.append(input_text)
         print("Current append list:", append_list)
