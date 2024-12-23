@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 import os
 from typing import List, Dict, Optional, Union
 import logging
-from hackthon_ktm.most_repeted_sentences import get_most_repeated_sentences, save_most_repeated_sentences
+from most_repeted_sentences import get_most_repeated_sentences, save_most_repeated_sentences
 
 
 # Configure logging
@@ -229,7 +229,7 @@ def fetch_most_repeated_sentences():
     '''
 
     try:
-        with open('hackthon_ktm\most_repeated_sentences.txt', 'r') as file:
+        with open(os.path.join('hackthon_ktm', 'most_repeated_sentences.txt'), 'r') as file:
             lines = [line.strip().split(':')[0] for line in file.readlines()[:5]]
         return jsonify(lines), 200
     except FileNotFoundError:
