@@ -253,7 +253,6 @@ def predict_words():
         #     append_list = []  # Reset the append list
         #     return jsonify(default_predicted_words[:9])  # Return the default words
 
-
         # Handle reset request
         if input_text == "1":
         
@@ -264,7 +263,7 @@ def predict_words():
             global_count = 0
             sentence= sentences_name('dataset.txt')
             repeated_sentences = get_most_repeated_sentences(sentence)
-            print("Most repeated sentences:", repeated_sentences)
+            # print("Most repeated sentences:", repeated_sentences)
             save_most_repeated_sentences(repeated_sentences, 'most_repeated_sentences.txt')
             
             return jsonify(default_predicted_words[:9])

@@ -239,7 +239,7 @@ export default function Screen1() {
         // console.log("this is the generated id", id);
         try {
           const response = await axios.get(
-            `http://192.168.1.66:5000/api/images?query=${word}&id=${id}`
+            `https://saurabey-autism-app.hf.space/api/images?query=${word}&id=${id}`
           );
           let imageUrl: string | null = "";
           // console.log("response",response.data);
@@ -279,7 +279,7 @@ export default function Screen1() {
     try {
       console.log("tyring.....");
       const response = await fetch(
-        ` http://192.168.1.66:5000/api/display_words?count=${counter}`
+        ` https://saurabey-autism-app.hf.space/api/display_words?count=${counter}`
       );
       if (!response.ok) {
         throw new Error("Network response was not ok");
@@ -294,7 +294,7 @@ export default function Screen1() {
 
   const sendPostRequest = async (item: string, flag: Number) => {
     console.log("post garepaxi", item, flag);
-    const url = `http://192.168.1.66:5000/api/guu`;
+    const url = `https://saurabey-autism-app.hf.space/api/guu`;
     const data = {
       item: item,
       flag: flag,
